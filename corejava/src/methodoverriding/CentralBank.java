@@ -8,6 +8,7 @@ public class CentralBank {
 	void getInterestRate() {
 		System.out.println("0");
 	}
+
 	
 	void moneyExRate() {
 		System.out.println("$1 = 150");
