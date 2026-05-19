@@ -9,7 +9,7 @@ public class CheckingAccount extends BankAccount implements FeeCharger {
 	@Override
 	public void chargeFee() {
 		balance -= 5;
-		System.out.println(balance);
+		System.out.println("Current Balance after deducting $5 as withdrawl fee: "+balance);
 	}
 	
 	
