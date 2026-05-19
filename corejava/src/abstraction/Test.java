@@ -6,10 +6,11 @@ public class Test {
 		bank.getBankName();
 		bank.getInterestRate();
 		
+		// UserService Interface extends CommonService Interface
 		UserService us = new UserServiceImpl();
 		us.addUser();
 		us.deleteUser();
-		us.print();
+		us.print(); // method of CommonService
 		
 		// CommonService cs = new UserServiceImpl();
 		// cs.print();
