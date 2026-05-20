@@ -2,6 +2,7 @@ package javacollection;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 
 public class MapTest {
@@ -16,11 +17,17 @@ public class MapTest {
 		map.put("Nepali", 99);
 		map.put("Java", 77);
 
-		
 		System.out.println(map);
+		System.out.println("Map Size : " + map.size());
+		System.out.println("Map Keys : " + map.keySet());
+		System.out.println("Map Values : " + map.values());
+
+		String remove_subject = (map.containsKey("Science")) ? "Science" : "Nothing";
+		System.out.println("Removed " + remove_subject);
+		map.remove("Science");
 		
-		for(String key : map.keySet()) {
-			System.out.println(key+" = "+map.get(key));
+		for (String key : map.keySet()) {
+			System.out.println(key + " = " + map.get(key));
 		}
 	}
 }
