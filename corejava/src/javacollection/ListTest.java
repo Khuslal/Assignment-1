@@ -50,7 +50,7 @@ public class ListTest {
 			Student s1 = new Student(name, age, campus);
 			list.add(s1);
 		}
-
+		sc.close();
 		for (Student key : list) {
 			System.out.println(key.getName() + " " + key.getAge() + " " + key.getCampus());
 		}
