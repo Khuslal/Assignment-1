@@ -1,9 +1,9 @@
 package javacollection;
 
-import java.util.HashSet;
+//import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import java.util.TreeSet;
+//import java.util.TreeSet;
 
 public class SetTest {
 	public static void main(String[] args) {
@@ -24,7 +24,7 @@ public class SetTest {
 		/*
 		 * a. Cat
 		 * b. Pen
-		 * c. Compter
+		 * c. Computer
 		 */ 
 	}
 }
