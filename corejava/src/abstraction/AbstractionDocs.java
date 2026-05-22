@@ -19,7 +19,7 @@ public class AbstractionDocs {
 	 *  	# every abstract class must have at least one child class and 
 	 *  	  child class must override abstract methods.
 	 *  	# level of abstraction 0-100%
-	 *  	# we can't create object of abstract.
+	 *  	# we can't create object of abstract class.
 	 *  	# syntax:
 	 *  		abstract class class-name{
 	 *  			// abstract methods
