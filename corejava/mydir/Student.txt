@@ -1,0 +1,12 @@
+Id : 302
+Name : Ram Chhetri
+Age : 20
+College : BMC
+Phone : 9804449814
+
+Id : 303
+Name : Sudip Chhetri
+Age : 22
+College : NCC
+Phone : 9804569814
+
