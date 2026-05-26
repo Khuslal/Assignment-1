@@ -5,7 +5,8 @@ import java.io.IOException;
 
 public class CreateFile {
 	/*
-	 * 1. File InputStream : readfile 2. File OutputStream : write file
+	 * 1. File InputStream : readfile 
+	 * 2. File OutputStream : write file
 	 */
 
 	public static void main(String[] args) throws IOException {
@@ -17,6 +18,7 @@ public class CreateFile {
 		file.write("Hello Java".getBytes());
 		// Closing file
 		file.close();
+		file1.close();
 
 		System.out.println("File Created");
 	}

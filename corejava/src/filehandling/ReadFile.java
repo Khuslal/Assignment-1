@@ -1,7 +1,6 @@
 package filehandling;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class ReadFile {
@@ -17,5 +16,7 @@ public class ReadFile {
 		while((data1 = file1.read())!= -1) {
 			System.out.print((char)data1);
 		}
+		file.close();
+		file1.close();
 	}
 }
