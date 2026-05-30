@@ -29,5 +29,6 @@ public class Test {
 		default :
 			System.out.println("Invalid Choice!");
 		}
+		scn.close();
 	}
 }

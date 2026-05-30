@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class Operations extends AccountDetail {
+public class Operations {
 
 	private Connection getConnection() throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
@@ -80,9 +80,12 @@ public class Operations extends AccountDetail {
 				if (rs.next()) {
 					long generatedAccNum = rs.getLong(1);
 					System.out.println("Account is created successfully.");
+					System.out.println("Account Name   : " + name);
 					System.out.println("Account Number : " + generatedAccNum);
+					System.out.println("Available Balance : " + balance);
 				}
 			}
+			scn.close();
 
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
@@ -113,9 +116,11 @@ public class Operations extends AccountDetail {
 				pstmt.setDouble(1, w_new_bal);
 				pstmt.setString(2, accountNumber);
 				pstmt.executeUpdate();
+				System.out.println("Withdrawn Rs. "+withdrawBalance+" New Balance: "+w_new_bal);
 			} else {
 				System.out.println("Insufficient Balance!");
 			}
+			scn.close();
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -152,6 +157,7 @@ public class Operations extends AccountDetail {
 			} else {
 				System.out.println("Can't deposit specified amount!");
 			}
+			scn.close();
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
