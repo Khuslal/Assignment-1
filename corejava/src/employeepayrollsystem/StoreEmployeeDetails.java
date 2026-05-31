@@ -1,19 +1,16 @@
 package employeepayrollsystem;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
 
-import control_statement.TotalSalaryCalc;
-
 public class StoreEmployeeDetails extends EmployeeDetails {
 	// Store Data In Database
 	void storeEmployeeRecords() {
-		try {
-			Scanner scn = new Scanner(System.in);
+		try (Scanner scn = new Scanner(System.in)) {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String url = "jdbc:mysql://localhost:3306/employeepayrollsystem";
@@ -65,7 +62,6 @@ public class StoreEmployeeDetails extends EmployeeDetails {
 			pstmt.executeUpdate();
 			System.out.println("Data stored successfully in database.");
 
-			scn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -73,8 +69,7 @@ public class StoreEmployeeDetails extends EmployeeDetails {
 
 	// Retrieve Data From Database
 	void fetchEmployeeRecords() {
-		try {
-			Scanner scn = new Scanner(System.in);
+		try (Scanner scn = new Scanner(System.in)) {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String url = "jdbc:mysql://localhost:3306/employeepayrollsystem";
@@ -97,7 +92,6 @@ public class StoreEmployeeDetails extends EmployeeDetails {
 				System.out.println("Total Salary : " + rs.getDouble("totalSalary"));
 			}
 
-			scn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -105,20 +99,23 @@ public class StoreEmployeeDetails extends EmployeeDetails {
 
 	// Update Data From Database
 	void updateEmployeeRecords() {
-		try {
-			Scanner scn = new Scanner(System.in);
+		try (Scanner scn = new Scanner(System.in)) {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String url = "jdbc:mysql://localhost:3306/employeepayrollsystem";
 			String user = "root";
 			String password = "password";
 			Connection conn = DriverManager.getConnection(url, user, password);
-			String query = "update employee set basicSalary = ?, allowance = ?, totalSalary = ? where name = ?";
+			String query = "update employee set basicSalary = ?, allowance = ?, totalSalary = ? where name = ? and id = ?";
 			PreparedStatement pstmt = conn.prepareStatement(query);
 
 			System.out.println("Enter Employee Full Name: ");
 			String targetUser = scn.nextLine();
 			pstmt.setString(4, targetUser);
+
+			System.out.println("Enter Employee ID To Confirm: ");
+			int targetId = Integer.parseInt(scn.nextLine());
+			pstmt.setInt(5, targetId);
 
 			System.out.println("Enter new basic salary: ");
 			setBasicSalary(Double.parseDouble(scn.nextLine()));
@@ -132,7 +129,7 @@ public class StoreEmployeeDetails extends EmployeeDetails {
 
 			pstmt.executeUpdate();
 			System.out.println("Employee details updated successfully.");
-			scn.close();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -140,8 +137,7 @@ public class StoreEmployeeDetails extends EmployeeDetails {
 
 	// Delete Employee From Database
 	void deleteEmployee() {
-		try {
-			Scanner scn = new Scanner(System.in);
+		try (Scanner scn = new Scanner(System.in)) {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String url = "jdbc:mysql://localhost:3306/employeepayrollsystem";
@@ -158,10 +154,10 @@ public class StoreEmployeeDetails extends EmployeeDetails {
 			System.out.println("Enter ID To Confirm: ");
 			int id = Integer.parseInt(scn.nextLine());
 			pstmt.setDouble(2, id);
-			System.out.println("Employee: "+targetUser+" with id: "+id+" has been deleted successfully from database.");
+			System.out.println(
+					"Employee: " + targetUser + " with id: " + id + " has been deleted successfully from database.");
 			pstmt.executeUpdate();
 
-			scn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
